@@ -10,22 +10,30 @@
 **/
 
 import { LightningElement, api, wire } from 'lwc';
-import { subscribe, MessageContext } from 'lightning/messageService';
-import LwcMessage from '@salesforce/messageChannel/ComCatMessageChannel__c';
+import { publish, subscribe, MessageContext } from 'lightning/messageService';
+import LwcMessage from '@salesforce/messageChannel/sampleMessage__c';
 
-export default class ComplianceCatalystContainer extends LightningElement {
-    subscription = null;
+export default class messageChannel extends LightningElement {
+    @api subscription;
+
+    // Subscribe to message channel
+    @wire(MessageContext)
+    messageContext; 
 
     connectedCallback(){
         this.subscription = subscribe(
             this.messageContext,
             LwcMessage, (message) => {
-                this.subscription = message;
+                this.subscription = JSON.stringify(message);
             }
         );
-        console.log('Record has been set to: '+JSON.stringify(this.subscription));
-    };
+    }
 
-    @wire(MessageContext)
-    messageContext; 
+    // Publish on message channel
+    handleClick(){
+        const payload = {
+            message: 'Test message'
+        };
+        publish(this.messageContext, LwcMessage, payload);
+    }; 
 }

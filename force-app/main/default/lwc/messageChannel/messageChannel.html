@@ -9,16 +9,17 @@
   1.0   04-09-2020   Glenn Deschuymer   Initial Version
 -->
 <template>
-    <lightning-card  title="Lightning message channel demo">
-        <lightning-button   label="Send message"
+    <lightning-card  title="Lightning Message Channel Demo">
+        <lightning-button   label="Send Message"
                             class="slds-var-m-around_medium"
-                            slot="actions">
+                            onclick={handleClick}
+                            slot="actions" >
         </lightning-button> 
         <lightning-layout multiple-rows="true">
             <lightning-layout-item flexibility="auto" size="6" padding="around-small">
                 <div class="header-column">
                     <p class="field-title" title="message">Message</p>
-                    <p>message</p>
+                    <p>Message is set to: {subscription}</p>
                 </div>
             </lightning-layout-item>
         </lightning-layout>
