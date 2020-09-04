@@ -1,0 +1,26 @@
+<!--
+  @description       : Demo for lightning message channel
+  @author            : Glenn Deschuymer
+  @group             : LWC
+  @last modified on  : 04-09-2020
+  @last modified by  : Glenn Deschuymer
+  Modifications Log 
+  Ver   Date         Author             Modification
+  1.0   04-09-2020   Glenn Deschuymer   Initial Version
+-->
+<template>
+    <lightning-card  title="Lightning message channel demo">
+        <lightning-button   label="Send message"
+                            class="slds-var-m-around_medium"
+                            slot="actions">
+        </lightning-button> 
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item flexibility="auto" size="6" padding="around-small">
+                <div class="header-column">
+                    <p class="field-title" title="message">Message</p>
+                    <p>message</p>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>    
+</template>
